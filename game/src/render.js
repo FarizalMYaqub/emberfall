@@ -561,7 +561,7 @@ function drawTitle(ctx, game, input, time) {
   game.buttons.start = startRect;
   button(ctx, startRect, '▶  START RUN', 'or press ENTER', inside(startRect, input.mouseX, input.mouseY), '#5df2ff');
 
-  const blink = 0.55 + 0.45 * Math.sin(time * 3.2);
+  const blink = 0.72 + 0.28 * Math.sin(time * 3.2);
   ctx.globalAlpha = blink;
   ctx.fillStyle = PALETTE.muted;
   ctx.font = `600 13px ${FONT}`;
@@ -802,5 +802,5 @@ export function drawGame(ctx, game, input, time) {
   ctx.textAlign = 'left';
   ctx.fillStyle = 'rgba(143, 134, 184, 0.75)';
   ctx.font = `600 11px ${FONT}`;
-  ctx.fillText(game.audioMuted ? 'SOUND OFF  [M]' : 'SOUND ON  [M]', 24, ARENA.height - 12);
+  ctx.fillText(game.audioMuted ? 'SOUND OFF  [M]' : 'SOUND ON  [M]', 24, ARENA.height - 40);
 }

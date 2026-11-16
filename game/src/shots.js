@@ -60,6 +60,14 @@ export function autopilot(game, input) {
     mx += (ember.x - p.x) / 130;
     my += (ember.y - p.y) / 130;
   }
+  // Gentle pull back toward the middle so the action stays on screen.
+  const cx = ARENA.width / 2 - p.x;
+  const cy = ARENA.height / 2 - p.y;
+  const cd = Math.hypot(cx, cy);
+  if (cd > 380) {
+    mx += (cx / cd) * 0.7;
+    my += (cy / cd) * 0.7;
+  }
   const len = Math.hypot(mx, my);
   if (len > 1) { mx /= len; my /= len; }
   input.moveX = mx;
@@ -156,14 +164,14 @@ export function stageShot(name, game, input) {
     }
     return false;
   }
-  // Default: play — a busy mid-fight frame on wave 3, well into the swarm.
+  // Default: play — a busy mid-fight frame on wave 6, well into the swarm.
   game.beginRun();
   let budget = 0;
-  while (budget < 60 * 120) {
+  while (budget < 60 * 180) {
     if (game.screen === 'upgrade') {
       game.chooseUpgrade(0);
     } else if (game.screen === 'play') {
-      if (game.wave >= 3 && game.enemies.length >= 6) break;
+      if (game.wave >= 6 && game.enemies.length >= 10) break;
       simulate(game, input, 0.5);
       budget += 30;
     } else {

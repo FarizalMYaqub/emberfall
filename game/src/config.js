@@ -46,15 +46,15 @@ export const COMBO = {
 };
 
 export const WAVES = {
-  baseCount: 6,
-  perWave: 3,
+  baseCount: 8,
+  perWave: 4,
   hpGrowth: 0.16,
   speedGrowth: 0.022,
   bossWaves: [5, 10],
   victoryWave: 10,
   clearBonus: 250,
-  spawnInterval: 0.85,
-  spawnIntervalMin: 0.32,
+  spawnInterval: 0.70,
+  spawnIntervalMin: 0.28,
 };
 
 // Enemy roster. `weight` is the spawn-table weight once the wave unlocks it.
